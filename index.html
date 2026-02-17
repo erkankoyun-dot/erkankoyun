@@ -1,11 +1,443 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Erkan Koyun</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Erkan Koyun | Web Programmer (PHP / Laravel / MySQL)</title>
+  <meta name="description" content="Erkan Koyun — Web Programmer. PHP, Laravel, MySQL. Backend development, automation/internal tools, DevOps + coding." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Erkan Koyun | Web Programmer" />
+  <meta property="og:description" content="PHP · Laravel · MySQL — Backend, automation tools, and DevOps + coding." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --panel:#11131a;
+      --text:#e9ecf1;
+      --muted:#a7b0c0;
+      --border:rgba(255,255,255,.10);
+      --accent:#ffffff;
+      --chip:rgba(255,255,255,.08);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 20% 10%, rgba(255,255,255,.08), transparent 60%),
+                  radial-gradient(900px 500px at 80% 0%, rgba(255,255,255,.06), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:var(--text); text-decoration:none}
+    a:hover{opacity:.9; text-decoration:underline}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 60px}
+    header{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:10px 0 22px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+    }
+    .logo{
+      width:40px; height:40px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(255,255,255,.25), rgba(255,255,255,.05));
+      border:1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .brand h1{font-size:16px; margin:0; letter-spacing:.3px}
+    .brand p{margin:0; font-size:12px; color:var(--muted)}
+    nav{
+      display:flex; gap:14px; flex-wrap:wrap;
+      font-size:14px; color:var(--muted);
+    }
+    nav a{color:var(--muted)}
+    nav a:hover{color:var(--text); text-decoration:none}
+
+    .hero{
+      border:1px solid var(--border);
+      background: rgba(17,19,26,.55);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      padding: 34px 22px;
+      box-shadow: var(--shadow);
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:22px;
+      align-items:start;
+    }
+    .kicker{color:var(--muted); font-size:13px; letter-spacing:.2px}
+    .title{
+      font-size:42px; line-height:1.1; margin:10px 0 10px;
+      letter-spacing:.2px;
+    }
+    .subtitle{
+      margin:0 0 18px; color:var(--muted); font-size:16px;
+    }
+    .chips{display:flex; flex-wrap:wrap; gap:10px; margin:16px 0 18px}
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      border-radius: 999px;
+      background: var(--chip);
+      border:1px solid var(--border);
+      color:var(--text);
+      font-size:13px;
+    }
+    .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:10px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:11px 14px;
+      border-radius: 12px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:600;
+      font-size:14px;
+      transition: transform .08s ease;
+    }
+    .btn:hover{transform: translateY(-1px); text-decoration:none}
+    .btn.primary{
+      background: rgba(255,255,255,.16);
+      border-color: rgba(255,255,255,.22);
+    }
+
+    .card{
+      border:1px solid var(--border);
+      background: rgba(17,19,26,.55);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .side{
+      padding:18px;
+    }
+    .side h3{margin:0 0 10px; font-size:14px; color:var(--muted); font-weight:600}
+    .side .row{display:flex; justify-content:space-between; gap:12px; padding:10px 0; border-top:1px solid var(--border)}
+    .side .row:first-of-type{border-top:none}
+    .side .row span{color:var(--muted); font-size:13px}
+    .side .row strong{font-size:13px; font-weight:700}
+
+    section{margin-top:18px}
+    .section-title{
+      font-size:16px; margin:0 0 10px;
+      color:var(--text);
+    }
+    .section-sub{margin:0 0 14px; color:var(--muted); font-size:14px}
+    .grid{
+      display:grid; gap:14px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .grid-2{
+      display:grid; gap:14px;
+      grid-template-columns: 1.1fr .9fr;
+    }
+    .box{padding:16px 16px 18px}
+    .box h4{margin:0 0 8px; font-size:15px}
+    .box p{margin:0; color:var(--muted); font-size:14px}
+    .list{
+      margin:12px 0 0; padding:0; list-style:none;
+      display:flex; flex-wrap:wrap; gap:10px;
+    }
+    .pill{
+      padding:8px 10px; border-radius: 999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      font-size:13px; color:var(--text);
+    }
+
+    .roles h3{margin:0 0 10px; font-size:16px}
+    .role{padding:16px}
+    .role h4{margin:0 0 8px; font-size:15px}
+    .role ul{margin:0; padding-left:18px; color:var(--muted); font-size:14px}
+    .role li{margin:6px 0}
+    .note{color:var(--muted); font-size:13px; margin-top:10px}
+
+    .contact{
+      padding:18px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:start;
+    }
+    .contact .mini{
+      padding:14px;
+      border-radius: 14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+    }
+    label{display:block; font-size:13px; color:var(--muted); margin:10px 0 6px}
+    input, textarea{
+      width:100%;
+      background: rgba(0,0,0,.25);
+      border:1px solid var(--border);
+      border-radius: 12px;
+      padding:11px 12px;
+      color:var(--text);
+      outline:none;
+      font-size:14px;
+    }
+    textarea{min-height:120px; resize:vertical}
+    .small{font-size:12px; color:var(--muted); margin-top:8px}
+    footer{
+      text-align:center; padding:26px 10px 0;
+      color:var(--muted); font-size:12px;
+    }
+
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .contact{grid-template-columns:1fr}
+      .title{font-size:34px}
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Erkan Koyun</h1>
-  <p>Cloudflare + Render çalışıyor 🚀</p>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Erkan Koyun</h1>
+          <p>Web Programmer · PHP · Laravel · MySQL</p>
+        </div>
+      </div>
+
+      <nav aria-label="Navigation">
+        <a href="#about">Hakkımda</a>
+        <a href="#focus">Odak</a>
+        <a href="#skills">Yetenekler</a>
+        <a href="#projects">Projeler</a>
+        <a href="#contact">İletişim</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <main class="hero card" id="top">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker">Backend ağırlıklı · temiz kod · uzun ömürlü sistemler</div>
+          <div class="title">Web Programmer</div>
+          <p class="subtitle">
+            PHP / Laravel / MySQL ile sağlam backend sistemleri kurarım.
+            API geliştirme, iç araçlar (automation) ve gerektiğinde DevOps tarafında Docker & Linux ile çalışırım.
+          </p>
+
+          <div class="chips" aria-label="Highlights">
+            <span class="chip">PHP</span>
+            <span class="chip">Laravel</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">REST APIs</span>
+            <span class="chip">Docker</span>
+            <span class="chip">Linux</span>
+          </div>
+
+          <div class="actions">
+            <a class="btn primary" href="#contact">İletişime Geç</a>
+            <a class="btn" href="https://github.com/erkankoyun-dot" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn" href="#projects">Projeler</a>
+          </div>
+
+          <p class="note">
+            Not: Bu site statik çalışır (Cloudflare Pages). PHP kodu burada çalıştırılmaz.
+          </p>
+        </div>
+
+        <aside class="side card">
+          <h3>Özet</h3>
+          <div class="row"><span>Rol</span><strong>Backend Developer</strong></div>
+          <div class="row"><span>Stack</span><strong>PHP · Laravel · MySQL</strong></div>
+          <div class="row"><span>Ek</span><strong>Automation · DevOps</strong></div>
+          <div class="row"><span>Lokasyon</span><strong>USA</strong></div>
+        </aside>
+      </div>
+    </main>
+
+    <!-- ABOUT -->
+    <section class="card box" id="about">
+      <h2 class="section-title">Hakkımda</h2>
+      <p class="section-sub">
+        Ben Erkan Koyun. Backend geliştirme odaklı çalışırım. Önceliğim: net mimari, okunabilir kod, güvenlik ve sürdürülebilirlik.
+      </p>
+      <ul class="list" aria-label="Key points">
+        <li class="pill">Temiz & Maintainable Code</li>
+        <li class="pill">Database-Driven Apps</li>
+        <li class="pill">API Integrations</li>
+        <li class="pill">Docker + Linux</li>
+      </ul>
+    </section>
+
+    <!-- FOCUS / ROLES -->
+    <section class="card box roles" id="focus">
+      <h2 class="section-title">Odak Alanlarım (Hedef Roller)</h2>
+      <p class="section-sub">Aşağıdaki 3 alanda üretkenim ve iş teslim etmeyi severim.</p>
+
+      <div class="grid">
+        <div class="card role">
+          <h4>🥇 1) Backend Developer (PHP / Laravel)</h4>
+          <ul>
+            <li>PHP, Laravel</li>
+            <li>MySQL / SQL</li>
+            <li>REST API geliştirme</li>
+            <li>Performans ve güvenlik odaklı backend</li>
+          </ul>
+        </div>
+
+        <div class="card role">
+          <h4>🥈 2) Automation / Internal Tools Developer</h4>
+          <ul>
+            <li>Şirket içi scriptler / otomasyon</li>
+            <li>API entegrasyonları</li>
+            <li>Raporlama, veri işleme</li>
+            <li>Küçük web panelleri</li>
+          </ul>
+          <p class="note"><strong>Diller:</strong> PHP · Python · SQL</p>
+        </div>
+
+        <div class="card role">
+          <h4>🥉 3) DevOps / SysAdmin + Coding</h4>
+          <ul>
+            <li>Linux</li>
+            <li>Docker (compose, container yönetimi)</li>
+            <li>CI/CD temelleri</li>
+            <li>Bash + gerektiğinde PHP/Python</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="grid-2" id="skills">
+      <div class="card box">
+        <h2 class="section-title">Teknik Yetenekler</h2>
+        <p class="section-sub">Backend ağırlıklı, pratik ve iş odaklı.</p>
+        <ul class="list">
+          <li class="pill">PHP</li>
+          <li class="pill">Laravel</li>
+          <li class="pill">MySQL</li>
+          <li class="pill">SQL</li>
+          <li class="pill">REST</li>
+          <li class="pill">Docker</li>
+          <li class="pill">Linux</li>
+          <li class="pill">Bash</li>
+          <li class="pill">Python</li>
+          <li class="pill">HTML/CSS</li>
+        </ul>
+      </div>
+
+      <div class="card box">
+        <h2 class="section-title">Çalışma Tarzım</h2>
+        <p class="section-sub">
+          Basit, anlaşılır ve sürdürülebilir çözümler.
+        </p>
+        <div class="grid" style="grid-template-columns:1fr; gap:10px;">
+          <div class="mini" style="padding:12px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.04);">
+            <strong>1) Plan</strong><br>
+            <span class="small">İhtiyaç → mimari → teslim planı</span>
+          </div>
+          <div class="mini" style="padding:12px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.04);">
+            <strong>2) Uygulama</strong><br>
+            <span class="small">Clean code, test edilebilir yapı</span>
+          </div>
+          <div class="mini" style="padding:12px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.04);">
+            <strong>3) Stabilite</strong><br>
+            <span class="small">Güvenlik, performans, bakım kolaylığı</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="card box" id="projects">
+      <h2 class="section-title">Projeler</h2>
+      <p class="section-sub">Güncel örnekleri buraya ekleyebiliriz. Şimdilik taslak:</p>
+
+      <div class="grid">
+        <div class="card box">
+          <h4>NY Travel for Health</h4>
+          <p>Sağlık turizmi odaklı marka / web altyapısı. Domain, DNS, deploy ve içerik planlama.</p>
+        </div>
+        <div class="card box">
+          <h4>Internal Tools (Automation)</h4>
+          <p>API entegrasyonları, raporlama akışları, küçük admin panelleri (PHP/Python/SQL).</p>
+        </div>
+        <div class="card box">
+          <h4>DevOps & Docker Setups</h4>
+          <p>Docker compose ile geliştirme ortamları, basit CI/CD mantığı, Linux üzerinde dağıtım.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="card contact" id="contact">
+      <div>
+        <h2 class="section-title">İletişim</h2>
+        <p class="section-sub">En hızlı iletişim: e-posta.</p>
+
+        <div class="mini">
+          <p style="margin:0 0 10px;">
+            <strong>Email:</strong>
+            <a href="mailto:erkankoyun@outlook.com">erkankoyun@outlook.com</a>
+          </p>
+          <p style="margin:0 0 10px;">
+            <strong>GitHub:</strong>
+            <a href="https://github.com/erkankoyun-dot" target="_blank" rel="noreferrer">github.com/erkankoyun-dot</a>
+          </p>
+          <p style="margin:0;" class="small">
+            İstersen LinkedIn ekleriz.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="section-title">Mesaj Gönder</h2>
+
+        <!-- OPTION 1: Mailto form (no backend needed) -->
+        <form action="mailto:erkankoyun@outlook.com" method="post" enctype="text/plain">
+          <label for="name">Ad Soyad</label>
+          <input id="name" name="name" placeholder="Adınız" required>
+
+          <label for="subject">Konu</label>
+          <input id="subject" name="subject" placeholder="Örn: Backend iş teklifi / proje" required>
+
+          <label for="message">Mesaj</label>
+          <textarea id="message" name="message" placeholder="Mesajınız..." required></textarea>
+
+          <div class="actions" style="margin-top:12px;">
+            <button class="btn primary" type="submit">E-posta ile Gönder</button>
+            <a class="btn" href="#top">Yukarı</a>
+          </div>
+
+          <div class="small">
+            Not: Bu form “mailto” kullanır. Bazı bilgisayarlarda mail uygulaması açar. İstersen ücretsiz form servisi (Formspree) ile tamamen web üzerinden gönderim yaparız.
+          </div>
+        </form>
+
+        <!-- OPTION 2 (later): Formspree / Workers endpoint -->
+        <!--
+          If you want web-based form submit, replace form action with Formspree endpoint:
+          <form action="https://formspree.io/f/XXXXXXX" method="POST">
+        -->
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> Erkan Koyun · Web Programmer · Built on Cloudflare Pages
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
