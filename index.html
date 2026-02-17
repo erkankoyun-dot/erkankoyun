@@ -29,28 +29,50 @@
     .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 60px}
     header{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 0 22px}
     .brand{display:flex; align-items:center; gap:12px}
-    .logo{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,rgba(255,255,255,.25),rgba(255,255,255,.05));
-      border:1px solid var(--border); box-shadow:var(--shadow)}
+    .logo{
+      width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,rgba(255,255,255,.25),rgba(255,255,255,.05));
+      border:1px solid var(--border); box-shadow:var(--shadow)
+    }
     .brand h1{font-size:16px;margin:0}
     .brand p{margin:0;font-size:12px;color:var(--muted)}
     nav{display:flex; gap:14px; flex-wrap:wrap; font-size:14px; color:var(--muted); align-items:center}
     nav a{color:var(--muted)}
     nav a:hover{color:var(--text); text-decoration:none}
 
+    /* Language switch */
     .lang{
       display:inline-flex; gap:6px; align-items:center;
       padding:6px; border:1px solid var(--border); border-radius:999px; background:rgba(255,255,255,.04);
     }
     .lang button{
       cursor:pointer; border:1px solid transparent; border-radius:999px;
-      padding:7px 10px; background:transparent; color:var(--muted); font-weight:800; font-size:12px;
+      padding:7px 10px; background:transparent; color:var(--muted);
+      font-weight:800; font-size:12px;
       display:inline-flex; align-items:center;
     }
-    .lang button.active{background:rgba(255,255,255,.12); color:var(--text); border-color:rgba(255,255,255,.18)}
-    .flag{font-size:16px; line-height:1; display:inline-block; margin-right:6px}
+    .lang button.active{
+      background:rgba(255,255,255,.12);
+      color:var(--text);
+      border-color:rgba(255,255,255,.18)
+    }
+    .flag{
+      width:18px; height:12px;
+      display:inline-block;
+      margin-right:8px;
+      border-radius:3px;
+      overflow:hidden;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.18);
+      flex: 0 0 auto;
+    }
+    .flag svg{width:100%; height:100%; display:block}
 
-    .card{border:1px solid var(--border); background: rgba(17,19,26,.55); backdrop-filter: blur(10px);
-      border-radius: var(--radius); box-shadow: var(--shadow);}
+    .card{
+      border:1px solid var(--border);
+      background: rgba(17,19,26,.55);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
     .hero{padding:34px 22px}
     .hero-grid{display:grid; grid-template-columns: 1.2fr .8fr; gap:22px}
     .kicker{color:var(--muted); font-size:13px}
@@ -59,8 +81,12 @@
     .chips{display:flex; flex-wrap:wrap; gap:10px; margin:16px 0 18px}
     .chip{padding:8px 12px; border-radius:999px; background:var(--chip); border:1px solid var(--border); font-size:13px}
     .actions{display:flex; gap:12px; flex-wrap:wrap}
-    .btn{display:inline-flex; align-items:center; justify-content:center; padding:11px 14px; border-radius:12px;
-      border:1px solid var(--border); background: rgba(255,255,255,.06); color:var(--text); font-weight:700; font-size:14px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:11px 14px; border-radius:12px;
+      border:1px solid var(--border); background: rgba(255,255,255,.06);
+      color:var(--text); font-weight:700; font-size:14px
+    }
     .btn:hover{text-decoration:none; transform: translateY(-1px)}
     .btn.primary{background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.22)}
     .side{padding:18px}
@@ -74,7 +100,6 @@
     .section-title{font-size:16px;margin:0 0 10px}
     .section-sub{margin:0 0 14px;color:var(--muted);font-size:14px}
     .grid{display:grid; gap:14px; grid-template-columns: repeat(3, 1fr)}
-    .grid-2{display:grid; gap:14px; grid-template-columns: 1.1fr .9fr}
     .role{padding:16px}
     .role h4{margin:0 0 8px; font-size:15px}
     .role ul{margin:0; padding-left:18px; color:var(--muted); font-size:14px}
@@ -97,7 +122,6 @@
     @media (max-width: 900px){
       .hero-grid{grid-template-columns:1fr}
       .grid{grid-template-columns:1fr}
-      .grid-2{grid-template-columns:1fr}
       .contact{grid-template-columns:1fr}
       .title{font-size:34px}
     }
@@ -122,14 +146,64 @@
         <a href="#contact" data-i18n="nav_contact">Contact</a>
 
         <span class="lang" aria-label="Language">
-          <button id="btnEN" class="active" type="button" data-lang="en">
-            <span class="flag" aria-hidden="true">🇺🇸</span> EN
+          <!-- EN / US flag -->
+          <button id="btnEN" class="active" type="button" data-lang="en" aria-label="English">
+            <span class="flag" aria-hidden="true">
+              <svg viewBox="0 0 190 100" xmlns="http://www.w3.org/2000/svg">
+                <rect width="190" height="100" fill="#b22234"/>
+                <!-- white stripes -->
+                <g fill="#fff">
+                  <rect y="7.69" width="190" height="7.69"/>
+                  <rect y="23.07" width="190" height="7.69"/>
+                  <rect y="38.46" width="190" height="7.69"/>
+                  <rect y="53.84" width="190" height="7.69"/>
+                  <rect y="69.23" width="190" height="7.69"/>
+                  <rect y="84.61" width="190" height="7.69"/>
+                </g>
+                <!-- canton -->
+                <rect width="76" height="53.85" fill="#3c3b6e"/>
+                <!-- simple "stars" dots -->
+                <g fill="#fff" opacity="0.9">
+                  <!-- 6 rows x 5 cols -->
+                  <circle cx="7" cy="6" r="2"/><circle cx="22" cy="6" r="2"/><circle cx="37" cy="6" r="2"/><circle cx="52" cy="6" r="2"/><circle cx="67" cy="6" r="2"/>
+                  <circle cx="14.5" cy="14" r="2"/><circle cx="29.5" cy="14" r="2"/><circle cx="44.5" cy="14" r="2"/><circle cx="59.5" cy="14" r="2"/>
+                  <circle cx="7" cy="22" r="2"/><circle cx="22" cy="22" r="2"/><circle cx="37" cy="22" r="2"/><circle cx="52" cy="22" r="2"/><circle cx="67" cy="22" r="2"/>
+                  <circle cx="14.5" cy="30" r="2"/><circle cx="29.5" cy="30" r="2"/><circle cx="44.5" cy="30" r="2"/><circle cx="59.5" cy="30" r="2"/>
+                  <circle cx="7" cy="38" r="2"/><circle cx="22" cy="38" r="2"/><circle cx="37" cy="38" r="2"/><circle cx="52" cy="38" r="2"/><circle cx="67" cy="38" r="2"/>
+                  <circle cx="14.5" cy="46" r="2"/><circle cx="29.5" cy="46" r="2"/><circle cx="44.5" cy="46" r="2"/><circle cx="59.5" cy="46" r="2"/>
+                </g>
+              </svg>
+            </span>
+            EN
           </button>
-          <button id="btnDE" type="button" data-lang="de">
-            <span class="flag" aria-hidden="true">🇩🇪</span> DE
+
+          <!-- DE flag -->
+          <button id="btnDE" type="button" data-lang="de" aria-label="Deutsch">
+            <span class="flag" aria-hidden="true">
+              <svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg">
+                <rect width="3" height="2" fill="#ffce00"/>
+                <rect width="3" height="1.3333" y="0" fill="#dd0000"/>
+                <rect width="3" height="0.6666" y="0" fill="#000000"/>
+              </svg>
+            </span>
+            DE
           </button>
-          <button id="btnTR" type="button" data-lang="tr">
-            <span class="flag" aria-hidden="true">🇹🇷</span> TR
+
+          <!-- TR flag -->
+          <button id="btnTR" type="button" data-lang="tr" aria-label="Türkçe">
+            <span class="flag" aria-hidden="true">
+              <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
+                <rect width="30" height="20" fill="#e30a17"/>
+                <!-- crescent -->
+                <circle cx="12" cy="10" r="6" fill="#fff"/>
+                <circle cx="14" cy="10" r="5" fill="#e30a17"/>
+                <!-- star -->
+                <g fill="#fff" transform="translate(19.2 10) scale(0.9)">
+                  <polygon points="0,-4 1.2,-1.3 4,-1.3 1.7,0.4 2.6,3.2 0,1.6 -2.6,3.2 -1.7,0.4 -4,-1.3 -1.2,-1.3"/>
+                </g>
+              </svg>
+            </span>
+            TR
           </button>
         </span>
       </nav>
@@ -438,7 +512,7 @@
       }
     };
 
-    // Varsayılan dil: EN
+    // Default language: EN
     let lang = "en";
 
     function applyLang(){
@@ -452,7 +526,7 @@
       document.getElementById("btnDE").classList.toggle("active", lang==="de");
     }
 
-    // Dil butonları
+    // Language buttons
     document.querySelectorAll(".lang button[data-lang]").forEach(btn=>{
       btn.addEventListener("click", ()=>{
         lang = btn.getAttribute("data-lang");
@@ -480,7 +554,7 @@
       const subject = document.getElementById("subject").value.trim();
       const message = document.getElementById("message").value.trim();
 
-      // Turnstile token is injected as hidden input named cf-turnstile-response
+      // Turnstile token injected as hidden input named cf-turnstile-response
       const tokenEl = document.querySelector('input[name="cf-turnstile-response"]');
       const turnstileToken = tokenEl ? tokenEl.value : "";
 
@@ -500,7 +574,6 @@
         if(res.ok && data.ok){
           setStatus(i18n[lang].ok, "ok");
           document.getElementById("message").value = "";
-          // Turnstile token is single-use; user will get a new one automatically on next interaction
         } else {
           setStatus((data && data.error) ? data.error : i18n[lang].err, "err");
         }
